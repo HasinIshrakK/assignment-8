@@ -1,12 +1,13 @@
 import { Moon, Sun } from 'lucide-react';
-import React, { useState } from 'react';
 import { Link } from 'react-router';
 import img from '../../assets/githubLogo.png'
 import img2 from '../../assets/logo.png'
+import { use } from 'react';
+import { ThemeContext } from '../../App';
 
 const Navbar = () => {
 
-    const [theme, setTheme] = useState(true);
+    const [theme, setTheme] = use(ThemeContext)
 
     const themeToggle = () => {
         document.documentElement.setAttribute('data-theme', theme === true ? 'dark' : 'light')
