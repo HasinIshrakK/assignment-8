@@ -5,13 +5,14 @@ import ErrorPages from '../Pages/Error/ErrorPages';
 import Home from '../Pages/Home/Home';
 import Apps from '../Pages/Apps/Apps';
 import Installation from '../Pages/Installation/Installation';
+import Error from '../Pages/Error/Error';
 
 const router = createBrowserRouter(
     [
         {
             path:'/',
             Component: App,
-            errorElement:<ErrorPages></ErrorPages>,
+            errorElement:<Error></Error>,
 
             children:[
             {
@@ -25,6 +26,10 @@ const router = createBrowserRouter(
             {
                 path: '/installation',
                 Component: Installation
+            },
+            {
+                path: '/*',
+                Component: ErrorPages
             }
             ]
         }

@@ -1,7 +1,17 @@
-import React from 'react';
+import { Moon, Sun } from 'lucide-react';
+import React, { useState } from 'react';
 import { Link } from 'react-router';
+import img from '../../assets/githubLogo.png'
 
 const Navbar = () => {
+
+    const [theme, setTheme] = useState(true);
+
+    const themeToggle = () => {
+        document.documentElement.setAttribute('data-theme', theme === true ? 'dark' : 'light')
+        setTheme(!theme)
+    };
+
     return (
         <div>
             <div className="navbar bg-base-100 shadow-sm">
@@ -13,38 +23,57 @@ const Navbar = () => {
                         <ul
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                            <Link to='/'>
-                                <li><a>Home</a></li>
-                            </Link>
-                            <Link to='/apps'>
-                                <li>
-                                    <a>Apps</a>
-                                </li>
-                            </Link>
-                            <Link to='/installation'>
-                                <li><a>Installation</a></li>
-                            </Link>
+                            <li>
+                                <Link to='/'>
+                                    Home
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to='/apps'>
+                                    Apps
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to='/installation'>
+                                    Installation
+                                </Link>
+                            </li>
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">HERO.IO</a>
+                    <Link to='/' className="btn btn-ghost text-xl">HERO.IO</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        <Link to='/'>
-                            <li><a>Home</a></li>
-                        </Link>
-                        <Link to='/apps'>
-                            <li>
-                                <a>Apps</a>
-                            </li>
-                        </Link>
-                        <Link to='/installation'>
-                            <li><a>Installation</a></li>
-                        </Link>
+                        <li>
+                            <Link to='/'>
+                                Home
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to='/apps'>
+                                Apps
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to='/installation'>
+                                Installation
+                            </Link>
+                        </li>
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <a className="btn" href='https://github.com/HasinIshrakK'>Contribute</a>
+                <div className="navbar-end space-x-2">
+                    <button onClick={themeToggle} className='btn flex'>
+                        <Sun className={`
+                            ${theme===true || 'hidden'}
+                            `}></Sun>
+                        <Moon className={`
+                            ${theme===true && 'hidden'}
+                            `} />
+                    </button>
+                    <button className='btn bg-linear-to-br from-[#632EE3] to-[#9F62F2] text-white'>
+                        <img className='h-6 w-6' src={img} alt="Github" />
+                        <a href='https://github.com/HasinIshrakK'>Contribute</a>
+                    </button>
                 </div>
             </div>
         </div>
