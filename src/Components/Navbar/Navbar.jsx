@@ -43,7 +43,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <Link to='/' className="btn btn-ghost text-xl">
-                    <img className='h-8 w-8' src={img2} alt="" />
+                    <img className='h-8 w-8 hidden sm:block' src={img2} alt="" />
                     <h3>
                         HERO.IO
                     </h3>
@@ -69,7 +69,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end space-x-2">
-                    <button onClick={themeToggle} className='btn flex'>
+                    <button onClick={themeToggle} className='flex'>
                         <Sun className={`
                             ${theme===true || 'hidden'}
                             `}></Sun>

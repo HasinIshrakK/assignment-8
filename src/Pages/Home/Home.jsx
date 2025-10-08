@@ -14,7 +14,7 @@ const Home = () => {
 
     return (
         <div>
-            <div className={`${theme === true && 'bg-[#F1F5E8]'} p-20 pb-0`}>
+            <div className={`${theme === true && 'bg-[#F1F5E8]'} p-6 sm:p-20 pb-0`}>
                 <h1 className={`text-center font-bold mb-4 ${theme === true && 'text-black'}`}>
                     We Build <br></br>
                     <span className='text-[#9F62F2]'>
@@ -72,7 +72,7 @@ const Home = () => {
                     Explore All Trending Apps on the Market developed by us
                 </p>
             </div>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-20 my-10'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-6 sm:p-20 my-10'>
                 {
                     appsData.slice(0, 8).map(
                         appData => <DefaultApps appData={appData}></DefaultApps>

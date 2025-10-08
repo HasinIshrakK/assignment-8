@@ -72,7 +72,7 @@
     ]
   },
   {
-    "image": "../src/assets/demo-app(1).webp",
+    "image": "/images/demo-app(1).webp",
     "title": "MealWise",
     "companyName": "Foodly",
     "id": 5,
@@ -90,7 +90,7 @@
     ]
   },
   {
-    "image": "../src/assets/demo-app(2).webp",
+    "image": "/images/demo-app(2).webp",
     "title": "FinPilot",
     "companyName": "CreditSmart",
     "id": 6,
@@ -108,7 +108,7 @@
     ]
   },
   {
-    "image": "../src/assets/demo-app(3).webp",
+    "image": "/images/demo-app(3).webp",
     "title": "Readora",
     "companyName": "BookCraft Digital",
     "id": 7,
@@ -126,7 +126,7 @@
     ]
   },
   {
-    "image": "../src/assets/demo-app(4).webp",
+    "image": "/images/demo-app(4).webp",
     "title": "SkyFolio",
     "companyName": "VisionX",
     "id": 8,
@@ -144,7 +144,7 @@
     ]
   },
   {
-    "image": "../src/assets/demo-app(5).webp",
+    "image": "/images/demo-app(5).webp",
     "title": "Travella",
     "companyName": "SkyMap Co.",
     "id": 9,
@@ -162,7 +162,7 @@
     ]
   },
   {
-    "image": "../src/assets/demo-app(6).webp",
+    "image": "/images/demo-app(6).webp",
     "title": "Camify",
     "companyName": "PixelForge",
     "id": 10,
@@ -180,7 +180,7 @@
     ]
   },
   {
-    "image": "../src/assets/demo-app(1).webp",
+    "image": "/images/demo-app(1).webp",
     "title": "TodoZen",
     "companyName": "FlowMode Apps",
     "id": 11,
@@ -198,7 +198,7 @@
     ]
   },
   {
-    "image": "../src/assets/demo-app(2).webp",
+    "image": "/images/demo-app(2).webp",
     "title": "Langify",
     "companyName": "LinguaCore",
     "id": 12,
@@ -216,7 +216,7 @@
     ]
   },
   {
-    "image": "../src/assets/demo-app(3).webp",
+    "image": "/images/demo-app(3).webp",
     "title": "StreamLynk",
     "companyName": "VideoNexus",
     "id": 13,
@@ -234,7 +234,7 @@
     ]
   },
   {
-    "image": "../src/assets/demo-app(4).webp",
+    "image": "/images/demo-app(4).webp",
     "title": "MindNest",
     "companyName": "SoulSpace Technologies",
     "id": 14,
@@ -252,7 +252,7 @@
     ]
   },
   {
-    "image": "../src/assets/demo-app(5).webp",
+    "image": "/images/demo-app(5).webp",
     "title": "ByteGuard",
     "companyName": "CyberNest",
     "id": 15,
