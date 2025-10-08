@@ -2,6 +2,7 @@ import { Moon, Sun } from 'lucide-react';
 import React, { useState } from 'react';
 import { Link } from 'react-router';
 import img from '../../assets/githubLogo.png'
+import img2 from '../../assets/logo.png'
 
 const Navbar = () => {
 
@@ -40,7 +41,12 @@ const Navbar = () => {
                             </li>
                         </ul>
                     </div>
-                    <Link to='/' className="btn btn-ghost text-xl">HERO.IO</Link>
+                    <Link to='/' className="btn btn-ghost text-xl">
+                    <img className='h-8 w-8' src={img2} alt="" />
+                    <h3>
+                        HERO.IO
+                    </h3>
+                    </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -71,7 +77,7 @@ const Navbar = () => {
                             `} />
                     </button>
                     <button className='btn bg-linear-to-br from-[#632EE3] to-[#9F62F2] text-white'>
-                        <img className='h-6 w-6' src={img} alt="Github" />
+                        <img className='h-4 w-4' src={img} alt="Github" />
                         <a href='https://github.com/HasinIshrakK'>Contribute</a>
                     </button>
                 </div>
