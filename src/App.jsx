@@ -3,6 +3,7 @@ import './App.css'
 import Navbar from './Components/Navbar/Navbar'
 import Footer from './Components/Footer/Footer'
 import { createContext, useState } from 'react'
+import { ToastContainer } from 'react-toastify'
 
 export const ThemeContext = createContext([])
 
@@ -17,6 +18,7 @@ function App() {
         <Outlet></Outlet>
         <Footer></Footer>
       </ThemeContext>
+      <ToastContainer></ToastContainer>
     </>
   )
 }

@@ -75,7 +75,7 @@ const Home = () => {
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-6 sm:p-20 my-10'>
                 {
                     appsData.slice(0, 8).map(
-                        appData => <DefaultApps appData={appData}></DefaultApps>
+                        appData => <DefaultApps key={appData.id} appData={appData}></DefaultApps>
                     )
                 }
             </div>

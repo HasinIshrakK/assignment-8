@@ -18,8 +18,7 @@ const Apps = () => {
     const filteredApps = appsData.filter(
         appData => appData.title.toLowerCase().includes(searchTerm.toLowerCase())
     )
-    console.log(filteredApps)
-
+    
     return (
         <div className={`${theme === true && 'bg-[#F1F5E8]'} p-6 sm:p-20`}>
             <div className='text-center'>
@@ -41,7 +40,7 @@ const Apps = () => {
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-10'>
                 {
                     filteredApps.map(
-                        appData => <DefaultApps appData={appData}></DefaultApps>
+                        appData => <DefaultApps key={appData.id} appData={appData}></DefaultApps>
                     )
                 }
             </div>
