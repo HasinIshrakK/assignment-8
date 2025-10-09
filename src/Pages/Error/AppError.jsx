@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { use } from 'react';
 import img from '../../assets/App-Error.png'
 import { Link } from 'react-router';
+import { ThemeContext } from '../../App';
 
 const AppError = () => {
+
+        const [theme] = use(ThemeContext);
+
     return (
-        <div className='flex flex-col items-center my-20 mx-2'>
+        <div className={`${theme === true && 'bg-[#F1F5E8]'} flex flex-col items-center py-20 px-2`}>
             <img src={img} alt="404 Error" />
             <h1 className='mt-4 mb-2'>
                 OOPS!! APP NOT FOUND

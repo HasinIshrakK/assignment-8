@@ -12,7 +12,7 @@ const getStorage = () => {
 const setToStorage = (id) => {
     const storage = getStorage();
     if (storage.includes(id)) {
-        return toast('No needed');
+        return;
     } else {
         storage.push(id);
         const data = JSON.stringify(storage);
@@ -21,4 +21,13 @@ const setToStorage = (id) => {
     };
 };
 
-export default setToStorage;
+const checkStorage = (id) => {
+    const storage = getStorage();
+    if (storage.includes(id)) {
+        return true;
+    } else {
+        return false;
+    };
+};
+
+export { setToStorage, checkStorage, getStorage };

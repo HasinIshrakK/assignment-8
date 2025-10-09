@@ -1,28 +1,33 @@
-import React, { useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import downloads from '../../assets/icon-downloads.png';
 import ratings from '../../assets/icon-ratings.png';
 import reviews from '../../assets/icon-review.png';
 import { useLoaderData, useParams } from 'react-router';
 import { Bar, BarChart, CartesianGrid, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-import setToStorage from '../../Utility/DBM';
+import { setToStorage, checkStorage } from '../../Utility/DBM';
 import AppError from '../Error/AppError';
+import { ThemeContext } from '../../App';
 
 const AppDetails = () => {
 
     const [isDisabled, setIsDisabled] = useState(false)
     const install = (id) => {
-        setIsDisabled(true);
         setToStorage(id);
+        setIsDisabled(true);
     }
+    const [theme] = use(ThemeContext);
     const { id } = useParams();
     const appsData = useLoaderData();
     const [appData] = appsData.filter(appData => appData.id == id)
+    useEffect(
+        () => appData && setIsDisabled(checkStorage(appData.id)), [appData]
+    )
     if (!appData) {
         return <AppError></AppError>
     }
 
     return (
-        <div className='p-20'>
+        <div className={`${theme === true && 'bg-[#F1F5E8]'} p-6 sm:p-20`}>
             <div className='flex gap-10 flex-col md:flex-row border-b-2 border-gray-200 pb-8'>
                 <img className='md:w-1/5' src={appData.image} alt={appData.title} />
                 <div className='flex-1'>
@@ -63,7 +68,7 @@ const AppDetails = () => {
                     </div>
                     <button disabled={isDisabled} onClick={() => { install(appData.id) }} className='btn bg-[#00D390] text-white'>
                         {
-                            isDisabled ? 'Installed' : 'Install Now ( ' + appData.size +  ' MB)'
+                            isDisabled ? 'Installed' : 'Install Now ( ' + appData.size + ' MB)'
                         }
                     </button>
                     <p className=''></p>

@@ -11,34 +11,35 @@ import AppDetails from '../Pages/AppDetails/AppDetails';
 const router = createBrowserRouter(
     [
         {
-            path:'/',
+            path: '/',
             Component: App,
-            errorElement:<Error></Error>,
+            errorElement: <Error></Error>,
 
-            children:[
-            {
-                index: true,
-                Component: Home,
-                loader: () => fetch('/appsData.json')
-            },
-            {
-                path:'/apps',
-                Component: Apps,
-                loader: () => fetch('/appsData.json')
-            },
-            {
-                path: '/installation',
-                Component: Installation
-            },
-            {
-                path: '/apps/:id',
-                Component: AppDetails,
-                loader: () => fetch('/appsData.json')
-            },
-            {
-                path: '/*',
-                Component: ErrorPages
-            }
+            children: [
+                {
+                    index: true,
+                    Component: Home,
+                    loader: () => fetch('/appsData.json')
+                },
+                {
+                    path: '/apps',
+                    Component: Apps,
+                    loader: () => fetch('/appsData.json')
+                },
+                {
+                    path: '/installation',
+                    Component: Installation,
+                    loader: () => fetch('/appsData.json')
+                },
+                {
+                    path: '/apps/:id',
+                    Component: AppDetails,
+                    loader: () => fetch('/appsData.json')
+                },
+                {
+                    path: '/*',
+                    Component: ErrorPages
+                }
             ]
         }
     ]
