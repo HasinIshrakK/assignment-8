@@ -30,4 +30,10 @@ const checkStorage = (id) => {
     };
 };
 
-export { setToStorage, checkStorage, getStorage };
+const removeFromStorage = (id) => {
+    const storage = getStorage();
+    const newStorage = storage.filter(data => data !== id);
+    localStorage.setItem('ids', JSON.stringify(newStorage));
+};
+
+export { setToStorage, checkStorage, getStorage, removeFromStorage };

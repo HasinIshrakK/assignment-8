@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { use } from 'react';
 import downloads from '../../../assets/icon-downloads.png';
 import ratings from '../../../assets/icon-ratings.png';
+import { ThemeContext } from '../../../App';
+import { getStorage, removeFromStorage } from '../../../Utility/DBM';
 
-const InstalledApps = ({ins}) => {
+const InstalledApps = ({ ins, setI }) => {
+
+    const [theme] = use(ThemeContext);
+    const handle = () => {
+        removeFromStorage(ins.id);
+        setI(getStorage())
+    }
+
     return (
-        <div className='mx-6 sm:mx-20 bg-white rounded-2xl mt-8 mb-4'>
-            <div className='flex justify-between items-center p-4'>
-                <div className='flex gap-4'>
+        <div className={`${theme === true ? 'bg-white' : 'bg-gray-700'} mx-6 sm:mx-20 rounded-2xl mt-8 mb-4`}>
+            <div className='sm:flex justify-between items-center p-4'>
+                <div className='md:flex gap-4 my-2'>
                     <div>
                         <img className='rounded-md h-20' src={ins.image} alt="" />
                     </div>
@@ -26,7 +35,7 @@ const InstalledApps = ({ins}) => {
                             <div className='flex gap-2 items-center'>
                                 <img className='h-4' src={ratings} alt="" />
                                 <p>
-                                   {ins.ratingAvg}
+                                    {ins.ratingAvg}
                                 </p>
                             </div>
                             <div>
@@ -36,7 +45,7 @@ const InstalledApps = ({ins}) => {
                     </div>
                 </div>
                 <div>
-                    <button className='btn bg-[#00D390] text-white'>
+                    <button onClick={() => handle()} className='btn bg-[#00D390] text-white'>
                         Uninstall
                     </button>
                 </div>
