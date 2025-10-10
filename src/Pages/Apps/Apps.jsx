@@ -7,18 +7,23 @@ const Apps = () => {
 
     const appsData = useLoaderData();
     const [theme] = use(ThemeContext);
-    const [searchTerm, setSearchTerm] = useState('')
+    const [searchTerm, setSearchTerm] = useState('');
+    const [isSearching, setIsSearching] = useState(false);
 
     const onChangeFunction = e => {
         e.preventDefault();
         const val = e.target.value;
-        setSearchTerm(val)
+        setSearchTerm(val);
+        setIsSearching(true);
+        setTimeout(() => {
+            setIsSearching(false);
+        }, 400);
     }
 
     const filteredApps = appsData.filter(
         appData => appData.title.toLowerCase().includes(searchTerm.toLowerCase())
     )
-    
+
     return (
         <div className={`${theme === true && 'bg-[#F1F5E8]'} p-6 sm:p-20`}>
             <div className='text-center'>
@@ -37,15 +42,21 @@ const Apps = () => {
                     <input type="text" onChange={onChangeFunction} placeholder='Search Apps' defaultValue={searchTerm} />
                 </form>
             </div>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-10'>
-                {
-                    filteredApps.map(
-                        appData => <DefaultApps key={appData.id} appData={appData}></DefaultApps>
-                    )
-                }
-            </div>
+            {isSearching && (
+                <div className='flex justify-center'>
+                    <span className="loading loading-spinner text-info text-[#632EE3]"></span>
+                </div>)}
             {
-                filteredApps.length === 0 && <div className='flex flex-col mx-auto'>
+                !isSearching && <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-10'>
+                    {
+                        filteredApps.map(
+                            appData => <DefaultApps key={appData.id} appData={appData}></DefaultApps>
+                        )
+                    }
+                </div>
+            }
+            {
+                !isSearching && filteredApps.length === 0 && <div className='flex flex-col mx-auto'>
                     <h1 className='font-bold mb-4 text-center'>No Apps Found</h1>
                     <button onClick={() => window.location.reload()} className='btn bg-linear-to-br from-[#632EE3] to-[#9F62F2] text-white mb-20 flex mx-auto'>
                         Show All

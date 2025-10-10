@@ -4,6 +4,7 @@ import Navbar from './Components/Navbar/Navbar'
 import Footer from './Components/Footer/Footer'
 import { createContext, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
+import GlobalProgress from './Components/GlobalProgress/GlobalProgress'
 
 export const ThemeContext = createContext([])
 
@@ -22,7 +23,10 @@ function App() {
             <span className="loading loading-spinner text-info"></span>
           </div>
         }
-        <Outlet></Outlet>
+        <GlobalProgress></GlobalProgress>
+        {
+          !isLoading && <Outlet></Outlet>
+        }
         <Footer></Footer>
       </ThemeContext>
       <ToastContainer></ToastContainer>

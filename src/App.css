@@ -4,3 +4,13 @@ h3 { font-size: 20px; }
 h4 { font-size: 16px; }
 p, li { font-size: 14px;}
 
+#nprogress .bar {
+  background: linear-gradient(to right, #632EE3, #9F62F2) !important;
+  height: 5px !important;
+}
+
+#nprogress .peg {
+  box-shadow: 
+    0 0 10px #9F62F2,
+    0 0 5px #632EE3;
+}
