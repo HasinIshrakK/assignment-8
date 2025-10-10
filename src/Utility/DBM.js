@@ -1,5 +1,3 @@
-import { toast } from "react-toastify";
-
 const getStorage = () => {
     const storage = localStorage.getItem('ids');
     if (storage) {
@@ -17,7 +15,6 @@ const setToStorage = (id) => {
         storage.push(id);
         const data = JSON.stringify(storage);
         localStorage.setItem('ids', data);
-        toast('App Installed Successfully');
     };
 };
 

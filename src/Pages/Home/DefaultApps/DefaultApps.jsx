@@ -15,7 +15,7 @@ const DefaultApps = ({ appData }) => {
                     <div className='btn flex gap-1.5 items-center'>
                         <img className='h-4' src={downloads} alt="Downloads" />
                         <h4 className='text-[#00D390]'>
-                            {appData.downloads}
+                            {appData.downloads} M
                         </h4>
                     </div>
                     <div className='btn flex gap-1.5 items-center text-[#FF8811]'>

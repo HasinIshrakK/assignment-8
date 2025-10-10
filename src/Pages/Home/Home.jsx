@@ -14,7 +14,7 @@ const Home = () => {
 
     return (
         <div>
-            <div className={`${theme === true && 'bg-[#F1F5E8]'} p-6 sm:p-20 pb-0`}>
+            <div className={`${theme === true && 'bg-[#F1F5E8]'} p-6 sm:p-20 pb-0 sm:pb-0`}>
                 <h1 className={`text-center font-bold mb-4 ${theme === true && 'text-black'}`}>
                     We Build <br></br>
                     <span className='text-[#9F62F2]'>

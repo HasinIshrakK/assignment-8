@@ -7,18 +7,20 @@ import { Bar, BarChart, CartesianGrid, Rectangle, ResponsiveContainer, Tooltip, 
 import { setToStorage, checkStorage } from '../../Utility/DBM';
 import AppError from '../Error/AppError';
 import { ThemeContext } from '../../App';
+import { toast } from 'react-toastify';
 
 const AppDetails = () => {
 
     const [isDisabled, setIsDisabled] = useState(false)
-    const install = (id) => {
-        setToStorage(id);
-        setIsDisabled(true);
-    }
     const [theme] = use(ThemeContext);
     const { id } = useParams();
     const appsData = useLoaderData();
     const [appData] = appsData.filter(appData => appData.id == id)
+    const install = (id) => {
+        setToStorage(id);
+        toast(`${appData.title} Installed Successfully`);
+        setIsDisabled(true);
+    }
     useEffect(
         () => appData && setIsDisabled(checkStorage(appData.id)), [appData]
     )
@@ -29,7 +31,7 @@ const AppDetails = () => {
     return (
         <div className={`${theme === true && 'bg-[#F1F5E8]'} p-6 sm:p-20`}>
             <div className='flex gap-10 flex-col md:flex-row border-b-2 border-gray-200 pb-8'>
-                <img className='md:w-1/5' src={appData.image} alt={appData.title} />
+                <img className='md:w-1/4' src={appData.image} alt={appData.title} />
                 <div className='flex-1'>
                     <h2 className='font-bold'>
                         {appData.title}
@@ -44,7 +46,7 @@ const AppDetails = () => {
                                 Downloads
                             </h4>
                             <h1 className="font-bold">
-                                {appData.downloads}
+                                {appData.downloads} M
                             </h1>
                         </div>
                         <div>
@@ -82,7 +84,13 @@ const AppDetails = () => {
                     <BarChart layout='vertical' width={150} height={40} data={appData.ratings}>
                         <XAxis type='number' />
                         <YAxis reversed={true} dataKey='name' type='category'></YAxis>
-                        <Tooltip></Tooltip>
+                        <Tooltip itemStyle={{
+                            color: 'black'
+                        }}
+                            labelStyle={{
+                                color: 'green'
+                            }} />
+
                         <defs>
                             <linearGradient id="barGradient" x1="0" y1="0" x2="1" y2="0">
                                 <stop offset="0%" stopColor="#632EE3" />

@@ -8,12 +8,24 @@ const Installation = () => {
 
     const appsData = useLoaderData();
     const [theme] = use(ThemeContext);
-    const [i, setI] = useState([])
+    const [i, setI] = useState([]);
+    const [sort, setSort] = useState("");
+
+    const onSort = (type) => {
+        setSort(type)
+        if (type === "(High-Low)") {
+            const s = [...i].sort((a, b) => b.downloads - a.downloads);
+            setI(s);
+        } else {
+            const s = [...i].sort((a, b) => a.downloads - b.downloads);
+            setI(s);
+        }
+    }
+
     useEffect(
         () => {
             const storage = getStorage();
-            const convSTR = storage.map(id => parseInt(id));
-            const installed = appsData.filter(app => convSTR.includes(app.id));
+            const installed = appsData.filter(app => storage.includes(app.id));
             setI(installed);
         }, [appsData]
     )
@@ -35,17 +47,17 @@ const Installation = () => {
                     </h3>
                 </div>
                 <div className="dropdown dropdown-bottom dropdown-end">
-                    <div tabIndex={0} role="button" className="btn m-1">Sort By Downloads</div>
+                    <div tabIndex={0} role="button" className="btn m-1"> {sort ? 'Sorted By Downloads: ' + sort : "Sort By Downloads"}</div>
                     <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                        <li><a>High-Low</a></li>
-                        <li><a>Low-High</a></li>
+                        <li><a onClick={() => onSort("(High-Low)")}>High-Low</a></li>
+                        <li><a onClick={() => onSort("(Low-High)")}>Low-High</a></li>
                     </ul>
                 </div>
             </div>
             <div className={`w-full`}>
                 {
                     i.map(
-                        ins => <InstalledApps key={ins.id} setI={setI} ins={ins}></InstalledApps>
+                        ins => <InstalledApps appsData={appsData} key={ins.id} setI={setI} ins={ins}></InstalledApps>
                     )
                 }
             </div>

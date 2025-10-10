@@ -3,13 +3,17 @@ import downloads from '../../../assets/icon-downloads.png';
 import ratings from '../../../assets/icon-ratings.png';
 import { ThemeContext } from '../../../App';
 import { getStorage, removeFromStorage } from '../../../Utility/DBM';
+import { toast } from 'react-toastify';
 
-const InstalledApps = ({ ins, setI }) => {
+const InstalledApps = ({ ins, setI, appsData }) => {
 
     const [theme] = use(ThemeContext);
     const handle = () => {
         removeFromStorage(ins.id);
-        setI(getStorage())
+        const storage = getStorage();
+        const installed = appsData.filter(app => storage.includes(app.id));
+        setI(installed);
+        toast(`${ins.title} Uninstalled Successfully`)
     }
 
     return (
@@ -29,7 +33,7 @@ const InstalledApps = ({ ins, setI }) => {
                             <div className='flex gap-2 items-center'>
                                 <img className='h-4' src={downloads} alt="" />
                                 <p>
-                                    {ins.downloads}
+                                    {ins.downloads} M
                                 </p>
                             </div>
                             <div className='flex gap-2 items-center'>
